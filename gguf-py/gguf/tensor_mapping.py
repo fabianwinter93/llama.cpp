@@ -144,6 +144,7 @@ class TensorNameMap:
             "transformer.decoder_layer.{bid}.multi_head_attention.query",# Grok
         ),
 
+        
         # Attention key
         MODEL_TENSOR.ATTN_K: (
             "model.layers.{bid}.self_attn.k_proj",                     # llama-hf
@@ -191,6 +192,37 @@ class TensorNameMap:
             "encoder.layers.{bid}.self_attention.dense",                    # chatglm
             "transformer.layers.{bid}.attn.out_proj",                       # openelm
         ),
+
+        MODEL_TENSOR.ATTN_LR_Q_A : (
+            "model.layers.{bid}.self_attn.q_proj_A",                
+        ),
+
+        MODEL_TENSOR.ATTN_LR_Q_B : (
+            "model.layers.{bid}.self_attn.q_proj_B",                     
+        ),
+
+        MODEL_TENSOR.ATTN_LR_K_A : (
+            "model.layers.{bid}.self_attn.k_proj_A",                
+        ),
+
+        MODEL_TENSOR.ATTN_LR_K_B : (
+            "model.layers.{bid}.self_attn.k_proj_B",                     
+        ),
+        MODEL_TENSOR.ATTN_LR_V_A : (
+            "model.layers.{bid}.self_attn.v_proj_A",                
+        ),
+
+        MODEL_TENSOR.ATTN_LR_V_B : (
+            "model.layers.{bid}.self_attn.v_proj_B",                     
+        ),
+        MODEL_TENSOR.ATTN_LR_OUT_A : (
+            "model.layers.{bid}.self_attn.out_proj_A",                
+        ),
+
+        MODEL_TENSOR.ATTN_LR_OUT_B : (
+            "model.layers.{bid}.self_attn.out_proj_B",                     
+        ),
+        
 
         # Attention output norm
         MODEL_TENSOR.ATTN_OUT_NORM: (
@@ -279,10 +311,19 @@ class TensorNameMap:
             "encoder.layers.{bid}.mlp.dense_h_to_4h",                 # chatglm
         ),
 
+        #
+        MODEL_TENSOR.FFN_LR_UP_A: (
+            "model.layers.{bid}.mlp.up_proj_A",                        
+        ),
+        MODEL_TENSOR.FFN_LR_UP_B: (
+            "model.layers.{bid}.mlp.up_proj_B",                        
+        ),
+        #
+
         MODEL_TENSOR.FFN_UP_EXP: (
             "layers.{bid}.feed_forward.experts.w3",          # mixtral (merged)
             "transformer.decoder_layer.{bid}.moe.linear_v",  # Grok (merged)
-            "transformer.blocks.{bid}.ffn.experts.mlp.v1",   # dbrx
+            "transformer.blocks.{bid}.ffn.experts.mlp.v1",   # DBRX
             "model.layers.{bid}.mlp.experts.up_proj",        # qwen2moe (merged)
         ),
 
@@ -309,6 +350,15 @@ class TensorNameMap:
             "transformer.h.{bid}.mlp.linear_1",           # refact
             "model.layers.{bid}.residual_mlp.w1",         # arctic
         ),
+
+        #
+        MODEL_TENSOR.FFN_LR_GATE_A: (
+            "model.layers.{bid}.mlp.gate_proj_A",                        
+        ),
+        MODEL_TENSOR.FFN_LR_GATE_B: (
+            "model.layers.{bid}.mlp.gate_proj_B",                        
+        ),
+        #
 
         MODEL_TENSOR.FFN_GATE_EXP: (
             "layers.{bid}.feed_forward.experts.w1",         # mixtral (merged)
@@ -348,6 +398,15 @@ class TensorNameMap:
             "encoder.layer.{bid}.mlp.down_layer",                     # jina-bert-v2
             "encoder.layers.{bid}.mlp.dense_4h_to_h",                 # chatglm
         ),
+
+        #
+        MODEL_TENSOR.FFN_LR_DOWN_A: (
+            "model.layers.{bid}.mlp.down_proj_A",                        
+        ),
+        MODEL_TENSOR.FFN_LR_DOWN_B: (
+            "model.layers.{bid}.mlp.down_proj_B",                        
+        ),
+        #
 
         MODEL_TENSOR.FFN_DOWN_EXP: (
             "layers.{bid}.feed_forward.experts.w2",          # mixtral (merged)
